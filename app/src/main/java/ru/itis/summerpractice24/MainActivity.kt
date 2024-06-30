@@ -43,7 +43,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    var l = 0
     fun competition() :String {
+        ++l
+        result += "\nLEVEL ${l}\n"
         var new = mutableListOf<Magician>()
         for (i in 0..<cur/2) {
             new.add(competition(temp[i], temp[i+cur/2]))
