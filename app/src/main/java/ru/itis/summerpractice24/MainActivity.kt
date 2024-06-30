@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         var new = mutableListOf<Magician>()
         for (i in 0..<cur/2) {
             new.add(competition(temp[i], temp[i+cur/2]))
-            result += " battle between ${temp[i].name} and ${temp[i+cur/2].name}, winner ${new[i].name}\n"
+            result += " battle between ${temp[i].name} and ${temp[i+cur/2].name} \n${new[i].name} win\n"
         }
         if (cur%2 != 0) {
             new.add(temp[(cur+1)/2])

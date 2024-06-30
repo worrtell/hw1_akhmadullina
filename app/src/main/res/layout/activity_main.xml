@@ -19,18 +19,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/david" />
 
-
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Magic Battle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#591818"
         android:textSize="34sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.036" />
@@ -48,7 +47,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_et"
             android:layout_width="168dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:textColorLink="#8C2413" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,8 +57,9 @@
         android:id="@+id/send_txt_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:enabled="false"
+        android:text="Press"
+        android:textColorLink="#8D9B2424"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +75,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="95dp"
         android:text=""
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
