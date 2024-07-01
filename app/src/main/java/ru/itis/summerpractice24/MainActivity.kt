@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     var temp :List<Magician> = ArrayList()
     var cnt = 0
     var cur = 0
+    var l = 0
     private var viewBinding: ActivityMainBinding? = null
 
 
@@ -28,22 +29,27 @@ class MainActivity : AppCompatActivity() {
     fun print() {
         viewBinding?.apply {
             textEt.doOnTextChanged { text, start, before, count ->
-                if (isNumeric(text.toString())) {
+                if (!text.toString().equals("") && isNumeric(text.toString())) {
                     sendTxtButton.isEnabled = true
                     cnt = Integer.parseInt(text.toString())
                     cur = cnt
+
+                    sendTxtButton.setOnClickListener {
+                        result = ""
+                        l = 0
+                        textView.text = "let's start!"
+                        imageView.isVisible = false
+                        createListOfMagitians2()
+                        textViewPlay.text = competition()
+                    }
                 }
-            }
-            sendTxtButton.setOnClickListener {
-                textView.text = "let's start!"
-                imageView.isVisible = false
-                createListOfMagitians2()
-                textViewPlay.text = competition()
+                else {
+                    sendTxtButton.isEnabled = false
+                }
             }
         }
     }
 
-    var l = 0
     fun competition() :String {
         ++l
         result += "\nLEVEL ${l}\n"
@@ -63,42 +69,46 @@ class MainActivity : AppCompatActivity() {
         if (cur > 1) {
             competition()
         }
-        if (cur == 1) {
+        else {
             result += "\n!!! winner - ${temp[0].name}"
         }
-
         return result
     }
 
     fun createListOfMagitians2() {
         var l = mutableListOf<Magician>()
         var n = 0
-        for (i in 1..cnt) {
-            ++ n
-            val kind = (0..3).random()
-            var m :Magician = Magician()
-            when (kind) {
-                0 -> {
-                    m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).wand((0..7).random()).yearsOfEducation((0..8).random()).buildMag()
+        if (cnt > 0) {
+            for (i in 1..cnt) {
+                ++ n
+                val kind = (0..3).random()
+                var m :Magician = Magician()
+                when (kind) {
+                    0 -> {
+                        m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).wand((0..7).random()).yearsOfEducation((0..8).random()).buildMag()
+                    }
+                    1 -> {
+                        m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).type((0..5).random()).domesticationLevel((0..100).random()).buildBeing()
+                    }
+                    2 -> {
+                        m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).deadlinessLevel((0..100).random()).buildCreature()
+                    }
+                    3 -> {
+                        m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).notBeingType((0..3).random()).buildSpirit()
+                    }
                 }
-                1 -> {
-                    m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).type((0..5).random()).domesticationLevel((0..100).random()).buildBeing()
-                }
-                2 -> {
-                    m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).deadlinessLevel((0..100).random()).buildCreature()
-                }
-                3 -> {
-                    m = MagitianBuilder().name(n).age((0..1000).random()).area((0..3).random()).abilitiesLevel((0..100).random()).side((0..2).random()).notBeingType((0..3).random()).buildSpirit()
-                }
+                l.add(m)
             }
-            l.add(m)
+            list = l
+            temp = l
         }
-        list = l
-        temp = l
     }
 
-    fun isNumeric(str: String) :Boolean {
-        return str.all { it in '0'..'9' }
+    fun isNumeric(str: String?) :Boolean {
+        if (str != null) {
+            return str.all { it in '0'..'9' }
+        }
+        return false
     }
 
     fun competition(m1 :Magician, m2 :Magician) :Magician {

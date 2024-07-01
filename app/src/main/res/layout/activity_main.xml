@@ -5,25 +5,27 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/cardview_light_background"
     tools:context=".MainActivity">
+
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="223dp"
-        android:layout_height="280dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:layout_marginBottom="16dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/david" />
+        app:srcCompat="@drawable/witches" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Magic Battle"
+        android:text="@string/magic_battle"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#591818"
         android:textSize="34sp"
@@ -38,7 +40,6 @@
         android:id="@+id/text_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         app:layout_constraintBottom_toTopOf="@+id/send_txt_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="Press"
+        android:text="@string/btn_press"
         android:textColorLink="#8D9B2424"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,10 +71,10 @@
         android:id="@+id/textViewPlay"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
         android:text=""
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
